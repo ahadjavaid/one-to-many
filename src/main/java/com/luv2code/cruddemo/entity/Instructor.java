@@ -2,6 +2,7 @@ package com.luv2code.cruddemo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -115,8 +116,9 @@ public class Instructor {
 
     public void add(Course tempCourse) {
         if(courses == null) {
-            courses.add(tempCourse);
+            courses = new ArrayList<>();
         }
+        courses.add(tempCourse);
         tempCourse.setInstructor(this);
     }
 }
