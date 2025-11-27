@@ -11,9 +11,11 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "title")
     private String title;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH })
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
@@ -53,8 +55,6 @@ public class Course {
         this.instructor = theInstructor;
     }
 
-
-
     // define toString()
 
     @Override
@@ -64,7 +64,6 @@ public class Course {
                 ", title='" + title + '\'' +
                 '}';
     }
-
 
     // annotate fields
 }
