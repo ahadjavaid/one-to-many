@@ -28,9 +28,20 @@ public class CruddemoApplication {
 //			deleteInstructorDetailById(appDAO);
 //            createInstructorwithCourse(appDAO);
 //            findInstructorWithCourses(appDAO);
-            findCoursesForInstructor(appDAO);
+//            findCoursesForInstructor(appDAO);
+            findInstructorWithCoursesJoinFetch(appDAO);
 		};
 	}
+
+    private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+        int theId = 1;
+        System.out.println("Finding instructor id: " + theId);
+        Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+        System.out.println("temp instructor: " + tempInstructor);
+        System.out.println("the associated courses: " + tempInstructor.getCourses());
+
+        System.out.println("Done!");
+    }
 
     private void findCoursesForInstructor(AppDAO appDAO) {
         int theId = 1;
@@ -39,11 +50,15 @@ public class CruddemoApplication {
         Instructor tempInstructor = appDAO.findInstructorById(theId);
         System.out.println("temp instructor: " + tempInstructor);
         // find courses for instructor
-        List<Course> courses = appDAO.findCoursesByInstructorId(theId);
 
+        System.out.println("Finding courses for instructor id: " + theId);
+        List<Course> courses = appDAO.findCoursesByInstructorId(theId);
         // associate the objects
+
         tempInstructor.setCourses(courses);
         System.out.println("the associated courses: " + tempInstructor.getCourses());
+
+        System.out.println("Done!");
     }
 
     private void findInstructorWithCourses(AppDAO appDAO) {
@@ -81,7 +96,7 @@ public class CruddemoApplication {
 
         // save the instructor
         //
-        // NOTE: this willl also save the courses
+        // NOTE: this will also save the courses
         // because of CascadeType.PERSIST
         System.out.println("Saving instructor: " + tempInstructor);
         System.out.println("The courses: " + tempInstructor.getCourses());
