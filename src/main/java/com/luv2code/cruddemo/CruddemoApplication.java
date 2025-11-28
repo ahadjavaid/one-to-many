@@ -26,12 +26,36 @@ public class CruddemoApplication {
 //			deleteInstructorById(appDAO);
 //			findInstructorDetailById(appDAO);
 //			deleteInstructorDetailById(appDAO);
-//            createInstructorwithCourse(appDAO);
+            createInstructorwithCourse(appDAO);
 //            findInstructorWithCourses(appDAO);
 //            findCoursesForInstructor(appDAO);
-            findInstructorWithCoursesJoinFetch(appDAO);
+//            findInstructorWithCoursesJoinFetch(appDAO);
+//            updateInstructor(appDAO);
+//            updateCourse(appDAO);
 		};
 	}
+
+    private void updateCourse(AppDAO appDAO) {
+        int theId = 10;
+        System.out.println("Finding course id: " + theId);
+        Course tempCourse = appDAO.findCourseById(theId);
+        System.out.println("updating course title");
+        tempCourse.setTitle("Enjoy the Simple Things");
+        appDAO.update(tempCourse);
+        System.out.println("Done!");
+    }
+
+    private void updateInstructor(AppDAO appDAO) {
+        int theId = 1;
+        // find the instructor
+        System.out.println("Finding instructor id: " + theId);
+        Instructor tempInstructor = appDAO.findInstructorById(theId);
+        // update the instructor
+        System.out.println("updating instructor last name");
+        tempInstructor.setLastName("Tester");
+        appDAO.update(tempInstructor);
+        System.out.println("Done!");
+    }
 
     private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
         int theId = 1;
@@ -127,7 +151,7 @@ public class CruddemoApplication {
 
 	private void deleteInstructorById(AppDAO appDAO) {
 
-		int id = 3;
+		int id = 1;
 		System.out.println("Deleting instructor against id: " + id);
 		appDAO.deleteInstructorById(id);
 		System.out.println("Deletion successful!");
@@ -157,7 +181,7 @@ public class CruddemoApplication {
 
 		// create the instructor
 
-		Instructor tempInstructor = new Instructor("Mohid","Suri","suri@gmail.com");
+		Instructor tempInstructor = new Instructor("Saad","Suriya","suriya880@gmail.com");
 
 		// create the instructor detail
 
